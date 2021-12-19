@@ -107,6 +107,37 @@ public class ArrayListOfString {
         return false;
     }
 
+
+    public boolean reverseStringByIndex(int index){
+        try {
+            char[] string = arrayList.get(index).toCharArray();
+            int n = string.length;
+            for (int i = 0; i < n / 2; i++) {
+                char temp = string[i];
+                string[i] = string[n - 1 - i];
+                string[n - 1 - i] = temp;
+            }
+            arrayList.set(index, String.valueOf(string));
+            return true;
+        } catch (Exception e){
+            System.out.println("Error, index is incorrect");
+        }
+        return false;
+    }
+
+    public boolean reverseStrings(){
+        try {
+            for (int i = 0; i < arrayList.size(); i++)
+                if (!reverseStringByIndex(i)){
+                    throw new Exception("Error, reverse failed");
+                }
+            return true;
+        } catch (Exception e){
+           e.printStackTrace();
+        }
+        return false;
+    }
+
     public Map<Integer, List<String>> getStringsComparedByLength() {
         Map<Integer, List<String>> stringMap = new HashMap<>();
         for (var item :

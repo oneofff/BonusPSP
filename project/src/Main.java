@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class Main {
                 case "2" -> delete();
                 case "3" -> searchRepeating();
                 case "4" -> XMLPush();
+                case "5" -> reverseStrings();
                 case "7" -> searchSubStings();
                 case "9" -> compareStrings();
                 case "10" -> stringByLength();
@@ -92,6 +94,14 @@ public class Main {
         }
         else {
             System.out.println("Неверный формат файла");
+        }
+    }
+
+    private static void reverseStrings(){
+        System.out.println("Изначальная коллекция: " + strings);
+        if (strings.reverseStrings()){
+            System.out.println("Реверс строк проведен успешно!");
+            System.out.println("Перевернутая коллекция: " + strings);
         }
     }
 
