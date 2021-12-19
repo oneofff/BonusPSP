@@ -1,5 +1,8 @@
 import java.util.*;
 
 public class ArrayListOfString {
-    List<String> arrayList= new ArrayList<>();
+    private List<String> arrayList;
+    void add(String str){
+        arrayList.add(str);
+    }
 }
