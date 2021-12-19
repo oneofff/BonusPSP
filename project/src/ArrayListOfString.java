@@ -45,4 +45,28 @@ public class ArrayListOfString {
     public int getLength() {
         return arrayList.size();
     }
+
+    public Map<String, Integer> getRepeatingElementsWithCount() {
+        Map<String, Integer> map = new HashMap<>();
+        Set<String> stringSet = new HashSet<>(arrayList);
+        if (stringSet.size() == arrayList.size()) {
+            return map;
+        }
+        for (var setItem :
+                stringSet) {
+            int count = 0;
+            for (var arrayItem :
+                    arrayList) {
+                if (Objects.equals(arrayItem, setItem)) {
+                    count++;
+                }
+            }
+            if (count>1) {
+                map.put(setItem, count);
+            }
+        }
+        return map;
+    }
+
+
 }

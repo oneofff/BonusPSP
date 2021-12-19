@@ -15,14 +15,21 @@ public class Main {
             switch (choice) {
                 case "1" -> add();
                 case "2" -> delete();
+                case "3" -> searchRepeating();
                 case "0" -> System.exit(0);
+                default -> System.out.println("Вы ввели неверное  значение");
             }
         }
     }
 
+    private static void searchRepeating() {
+        System.out.println(strings);
+        System.out.println(strings.getRepeatingElementsWithCount());
+    }
+
     private static void showMenu() {
         System.out.println("1. Добавление нового объекта");
-        System.out.println("2. Удаление нового объекта");
+        System.out.println("2. Удаление объекта");
         System.out.println("3. Поиск одинаковых элементов с подсчетом совпадений");
         System.out.println("4. Выгрузка в xml-файл");
         System.out.println("5. Реверс всех строк, входящих в коллекцию");
