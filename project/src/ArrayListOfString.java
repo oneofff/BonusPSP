@@ -90,4 +90,19 @@ public class ArrayListOfString {
         return arrayList.get(firstIndex).compareTo(arrayList.get(secondIndex));
 
     }
+
+    public Map<Integer, List<String>> getStringsComparedByLength() {
+        Map<Integer, List<String>> stringMap = new HashMap<>();
+        for (var item :
+                arrayList) {
+            if (stringMap.containsKey(item.length())) {
+                stringMap.get(item.length()).add(item);
+            } else {
+                stringMap.put(item.length(), new ArrayList<>());
+                stringMap.get(item.length()).add(item);
+            }
+        }
+        return stringMap;
+    }
+
 }

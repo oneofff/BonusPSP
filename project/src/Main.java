@@ -1,5 +1,4 @@
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -19,10 +18,16 @@ public class Main {
                 case "3" -> searchRepeating();
                 case "7" -> searchSubStings();
                 case "9" -> compareStrings();
+                case "10" -> stringByLength();
                 case "0" -> System.exit(0);
                 default -> System.out.println("Вы ввели неверное  значение");
             }
         }
+    }
+
+    private static void stringByLength() {
+        System.out.println(strings);
+        System.out.println(strings.getStringsComparedByLength());
     }
 
     private static void compareStrings() {
