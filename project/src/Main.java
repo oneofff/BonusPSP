@@ -16,6 +16,7 @@ public class Main {
                 case "1" -> add();
                 case "2" -> delete();
                 case "3" -> searchRepeating();
+                case "4" -> XMLPush();
                 case "7" -> searchSubStings();
                 case "9" -> compareStrings();
                 case "10" -> stringByLength();
@@ -82,6 +83,16 @@ public class Main {
         System.out.println("9. Сравнение строк");
         System.out.println("10. Длины строк входящих в коллекцию");
         System.out.println("0. Выход");
+    }
+
+    private static void XMLPush(){
+        String filename = "file.xml";
+        if (strings.XMLPush(filename)){
+            System.out.println("Данные успешно загружены в файл " + filename);
+        }
+        else {
+            System.out.println("Неверный формат файла");
+        }
     }
 
     private static void delete() {

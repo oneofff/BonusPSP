@@ -1,3 +1,7 @@
+import java.beans.XMLEncoder;
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.*;
 
 public class ArrayListOfString {
@@ -89,6 +93,18 @@ public class ArrayListOfString {
     public int compareInnerObjects(int firstIndex, int secondIndex) {
         return arrayList.get(firstIndex).compareTo(arrayList.get(secondIndex));
 
+    }
+
+    public boolean XMLPush(String filename){
+        try{
+            XMLEncoder x = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filename)));
+            x.writeObject(arrayList);
+            x.close();
+            return true;
+        } catch (Exception e){
+            System.out.println("Error, filename is incorrect");
+        }
+        return false;
     }
 
     public Map<Integer, List<String>> getStringsComparedByLength() {
