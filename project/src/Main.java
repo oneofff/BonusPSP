@@ -17,11 +17,34 @@ public class Main {
                 case "1" -> add();
                 case "2" -> delete();
                 case "3" -> searchRepeating();
-                case "6" -> searchSubStings();
+                case "7" -> searchSubStings();
+                case "9" -> compareStrings();
                 case "0" -> System.exit(0);
                 default -> System.out.println("Вы ввели неверное  значение");
             }
         }
+    }
+
+    private static void compareStrings() {
+        try {
+            System.out.println(strings);
+            System.out.println("Введите индекс от 1 до " + (strings.getLength()));
+            System.out.println("Введите индекс 1 строки: ");
+            int firstIndex = in.nextInt() - 1;
+            System.out.println("Введите индекс 2 строки: ");
+            int secondIndex = in.nextInt() - 1;
+            int result = strings.compareInnerObjects(firstIndex, secondIndex);
+            if (result == 0) {
+                System.out.println("Строки " + strings.getStringByIndex(firstIndex) + " и " + strings.getStringByIndex(secondIndex) + " одинаковые");
+            } else if (result > 0) {
+                System.out.println("Строка " + strings.getStringByIndex(firstIndex) + " больше строки " + strings.getStringByIndex(secondIndex));
+            } else {
+                System.out.println("Строка " + strings.getStringByIndex(firstIndex) + " меньше строки " + strings.getStringByIndex(secondIndex));
+            }
+        } catch (InputMismatchException ex) {
+            System.out.println("Неверный формат числа");
+        }
+
     }
 
     private static void searchSubStings() {
@@ -66,9 +89,9 @@ public class Main {
         System.out.println("2. Удаление по содержимому строки");
         String choose = in.next();
         if (choose.equals("1")) {
-            System.out.println("Введите индекс от 0 до " + (strings.getLength() - 1));
+            System.out.println("Введите индекс от 1 до " + (strings.getLength()));
             try {
-                int index = in.nextInt();
+                int index = in.nextInt() - 1;
                 String deletedString = strings.delete(index);
                 if (deletedString == null) {
                     return;

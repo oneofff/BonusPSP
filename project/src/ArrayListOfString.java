@@ -11,6 +11,10 @@ public class ArrayListOfString {
         }
     }
 
+    public String getStringByIndex(int index) {
+        return arrayList.get(index);
+    }
+
     public ArrayListOfString(List<String> arrayList) {
         this.arrayList = arrayList;
     }
@@ -64,24 +68,26 @@ public class ArrayListOfString {
                     count++;
                 }
             }
-            if (count>1) {
+            if (count > 1) {
                 map.put(setItem, count);
             }
         }
         return map;
     }
 
-    public List<String> getSubStrings(String subString){
+    public List<String> getSubStrings(String subString) {
         List<String> stringsContainsSub = new ArrayList<>();
         for (var string :
                 arrayList) {
-           if (string.contains(subString))
-           {
-               stringsContainsSub.add(string);
-           }
+            if (string.contains(subString)) {
+                stringsContainsSub.add(string);
+            }
         }
         return stringsContainsSub;
     }
 
+    public int compareInnerObjects(int firstIndex, int secondIndex) {
+        return arrayList.get(firstIndex).compareTo(arrayList.get(secondIndex));
 
+    }
 }
