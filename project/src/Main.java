@@ -1,4 +1,5 @@
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -16,10 +17,24 @@ public class Main {
                 case "1" -> add();
                 case "2" -> delete();
                 case "3" -> searchRepeating();
+                case "6" -> searchSubStings();
                 case "0" -> System.exit(0);
                 default -> System.out.println("Вы ввели неверное  значение");
             }
         }
+    }
+
+    private static void searchSubStings() {
+        System.out.println("Введите подстроку: ");
+        String subString = in.next();
+        System.out.println(strings);
+        ArrayListOfString stringList = new ArrayListOfString(strings.getSubStrings(subString));
+        if (stringList.getLength() == 0) {
+            System.out.println("Строк с данной подстрокой не найдено");
+            return;
+        }
+        System.out.println("Строки с подсрокой: " + stringList);
+        System.out.println("Количество вхождений: " + stringList.getLength());
     }
 
     private static void searchRepeating() {

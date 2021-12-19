@@ -9,7 +9,10 @@ public class ArrayListOfString {
         } catch (NullPointerException ex) {
             System.out.println("Error, string is null");
         }
+    }
 
+    public ArrayListOfString(List<String> arrayList) {
+        this.arrayList = arrayList;
     }
 
     public ArrayListOfString() {
@@ -66,6 +69,18 @@ public class ArrayListOfString {
             }
         }
         return map;
+    }
+
+    public List<String> getSubStrings(String subString){
+        List<String> stringsContainsSub = new ArrayList<>();
+        for (var string :
+                arrayList) {
+           if (string.contains(subString))
+           {
+               stringsContainsSub.add(string);
+           }
+        }
+        return stringsContainsSub;
     }
 
 
