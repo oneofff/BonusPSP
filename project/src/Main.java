@@ -20,6 +20,7 @@ public class Main {
                 case "4" -> XMLPush();
                 case "5" -> reverseStrings();
                 case "7" -> searchSubStings();
+                case "8" -> addFromFileAndPrint();
                 case "9" -> compareStrings();
                 case "10" -> stringByLength();
                 case "0" -> System.exit(0);
@@ -102,6 +103,16 @@ public class Main {
         if (strings.reverseStrings()){
             System.out.println("Реверс строк проведен успешно!");
             System.out.println("Перевернутая коллекция: " + strings);
+        }
+    }
+
+    private static void addFromFileAndPrint(){
+        System.out.println("Введите имя файла(не используя расширение): ");
+        String filename = in.next();
+        filename += ".txt";
+        if (strings.addFromFile(filename)){
+            System.out.println("Добавление из файла проведено успешно!");
+            System.out.println("Итоговая коллекция: " + strings);
         }
     }
 

@@ -1,7 +1,5 @@
 import java.beans.XMLEncoder;
-import java.io.BufferedOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.*;
 
 public class ArrayListOfString {
@@ -134,6 +132,24 @@ public class ArrayListOfString {
             return true;
         } catch (Exception e){
            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean addFromFile(String filename){
+        try(FileReader reader = new FileReader(filename)){
+            Scanner scanner = new Scanner(reader);
+
+            while (scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] strings = line.split(" ");
+                arrayList.addAll(List.of(strings));
+            }
+
+            reader.close();
+            return true;
+        } catch (IOException e){
+            System.out.println("Error, filename is incorrect");
         }
         return false;
     }
