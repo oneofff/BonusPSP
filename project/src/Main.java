@@ -3,6 +3,7 @@ import java.util.*;
 public class Main {
 
     private static final ArrayListOfString strings = new ArrayListOfString();
+    private static SizedArrayDequeOfString deque;
 
     private static final Scanner in = new Scanner(System.in);
 
@@ -22,6 +23,8 @@ public class Main {
                 case "8" -> addFromFileAndPrint();
                 case "9" -> compareStrings();
                 case "10" -> stringByLength();
+                case "11" -> newSizedDeque();
+                case "12" -> addSizedDeque();
                 case "0" -> System.exit(0);
                 default -> System.out.println("Вы ввели неверное  значение");
             }
@@ -84,8 +87,34 @@ public class Main {
         System.out.println("8. Инициализация листа по текстовому файлу и вывод содержимого коллекции на экран");
         System.out.println("9. Сравнение строк");
         System.out.println("10. Длины строк входящих в коллекцию");
+        System.out.println("11. Создать статическую коллекцию");
+        System.out.println("12. Добавить элемент в статическую коллекцию");
         System.out.println("0. Выход");
     }
+
+    private static void newSizedDeque(){
+        try {
+            System.out.println("Укажите размер коллекции: ");
+            int size = in.nextInt();
+            if (size < 1) throw new InputMismatchException();
+            deque = new SizedArrayDequeOfString(size);
+        }catch (InputMismatchException ex) {
+            System.out.println("Неверный формат числа");
+        }
+    }
+
+    private static void addSizedDeque(){
+        try {
+            System.out.println("Введите строку");
+            String newString = in.next();
+            deque.add(newString);
+            System.out.println("Строка добавлена");
+            System.out.println("Вся коллекция: " + deque);
+        } catch (NullPointerException e){
+            System.out.println("Коллекция не создана");
+        }
+    }
+
 
     private static void XMLPush(){
         String filename = "file.xml";
