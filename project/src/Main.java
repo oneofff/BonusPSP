@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -19,6 +17,7 @@ public class Main {
                 case "3" -> searchRepeating();
                 case "4" -> XMLPush();
                 case "5" -> reverseStrings();
+                case "6" -> printSymbolsStatistics();
                 case "7" -> searchSubStings();
                 case "8" -> addFromFileAndPrint();
                 case "9" -> compareStrings();
@@ -96,6 +95,11 @@ public class Main {
         else {
             System.out.println("Неверный формат файла");
         }
+    }
+
+    private static void printSymbolsStatistics(){
+        Map<Character, Integer> map = strings.getSymbolsStatistics();
+        System.out.println("Статистика по всем символам: " + map);
     }
 
     private static void reverseStrings(){

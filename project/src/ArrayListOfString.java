@@ -77,6 +77,17 @@ public class ArrayListOfString {
         return map;
     }
 
+
+    public Map<Character, Integer> getSymbolsStatistics(){
+        Map<Character, Integer> map = new HashMap<>();
+        for (String string : arrayList){
+            for (char ch : string.toCharArray()){
+                map.put(ch, map.get(ch) != null ? map.get(ch) + 1 : 1);
+            }
+        }
+        return map;
+    }
+
     public List<String> getSubStrings(String subString) {
         List<String> stringsContainsSub = new ArrayList<>();
         for (var string :
