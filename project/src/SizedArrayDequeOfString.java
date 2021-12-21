@@ -5,19 +5,17 @@ public class SizedArrayDequeOfString {
     private final ArrayDeque<String> arrayDeque;
     private final int size;
 
-    public SizedArrayDequeOfString(int size){
+    public SizedArrayDequeOfString(int size) {
         arrayDeque = new ArrayDeque<>();
         this.size = size;
     }
 
     void add(String str) {
         try {
-            if (arrayDeque.size() < size) {
-                arrayDeque.add(str);
-            } else{
+            if (arrayDeque.size() >= size) {
                 arrayDeque.pollFirst();
-                arrayDeque.add(str);
             }
+            arrayDeque.add(str);
         } catch (NullPointerException ex) {
             System.out.println("Error, string is null");
         }

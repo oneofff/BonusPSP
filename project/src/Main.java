@@ -92,58 +92,57 @@ public class Main {
         System.out.println("0. Выход");
     }
 
-    private static void newSizedDeque(){
+    private static void newSizedDeque() {
         try {
             System.out.println("Укажите размер коллекции: ");
             int size = in.nextInt();
             if (size < 1) throw new InputMismatchException();
             deque = new SizedArrayDequeOfString(size);
-        }catch (InputMismatchException ex) {
+        } catch (InputMismatchException ex) {
             System.out.println("Неверный формат числа");
         }
     }
 
-    private static void addSizedDeque(){
+    private static void addSizedDeque() {
         try {
             System.out.println("Введите строку");
             String newString = in.next();
             deque.add(newString);
             System.out.println("Строка добавлена");
             System.out.println("Вся коллекция: " + deque);
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Коллекция не создана");
         }
     }
 
 
-    private static void XMLPush(){
+    private static void XMLPush() {
         String filename = "file.xml";
-        if (strings.XMLPush(filename)){
+        if (strings.XMLPush(filename)) {
             System.out.println("Данные успешно загружены в файл " + filename);
-        }
-        else {
+        } else {
             System.out.println("Неверный формат файла");
         }
     }
 
-    private static void printSymbolsStatistics(){
+    private static void printSymbolsStatistics() {
         Map<Character, Integer> map = strings.getSymbolsStatistics();
         System.out.println("Статистика по всем символам: " + map);
     }
 
-    private static void reverseStrings(){
+    private static void reverseStrings() {
         System.out.println("Изначальная коллекция: " + strings);
-        if (strings.reverseStrings()){
+        if (strings.reverseStrings()) {
             System.out.println("Реверс строк проведен успешно!");
             System.out.println("Перевернутая коллекция: " + strings);
         }
     }
 
-    private static void addFromFileAndPrint(){
+    private static void addFromFileAndPrint() {
         System.out.println("Введите имя файла(не используя расширение): ");
         String filename = in.next();
         filename += ".txt";
-        if (strings.addFromFile(filename)){
+        if (strings.addFromFile(filename)) {
             System.out.println("Добавление из файла проведено успешно!");
             System.out.println("Итоговая коллекция: " + strings);
         }

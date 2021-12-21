@@ -78,10 +78,10 @@ public class ArrayListOfString {
     }
 
 
-    public Map<Character, Integer> getSymbolsStatistics(){
+    public Map<Character, Integer> getSymbolsStatistics() {
         Map<Character, Integer> map = new HashMap<>();
-        for (String string : arrayList){
-            for (char ch : string.toCharArray()){
+        for (String string : arrayList) {
+            for (char ch : string.toCharArray()) {
                 map.put(ch, map.get(ch) != null ? map.get(ch) + 1 : 1);
             }
         }
@@ -104,20 +104,20 @@ public class ArrayListOfString {
 
     }
 
-    public boolean XMLPush(String filename){
-        try{
+    public boolean XMLPush(String filename) {
+        try {
             XMLEncoder x = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filename)));
             x.writeObject(arrayList);
             x.close();
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error, filename is incorrect");
         }
         return false;
     }
 
 
-    public boolean reverseStringByIndex(int index){
+    public boolean reverseStringByIndex(int index) {
         try {
             char[] string = arrayList.get(index).toCharArray();
             int n = string.length;
@@ -128,30 +128,30 @@ public class ArrayListOfString {
             }
             arrayList.set(index, String.valueOf(string));
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error, index is incorrect");
         }
         return false;
     }
 
-    public boolean reverseStrings(){
+    public boolean reverseStrings() {
         try {
             for (int i = 0; i < arrayList.size(); i++)
-                if (!reverseStringByIndex(i)){
+                if (!reverseStringByIndex(i)) {
                     throw new Exception("Error, reverse failed");
                 }
             return true;
-        } catch (Exception e){
-           e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
 
-    public boolean addFromFile(String filename){
-        try(FileReader reader = new FileReader(filename)){
+    public boolean addFromFile(String filename) {
+        try (FileReader reader = new FileReader(filename)) {
             Scanner scanner = new Scanner(reader);
 
-            while (scanner.hasNextLine()){
+            while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] strings = line.split(" ");
                 arrayList.addAll(List.of(strings));
@@ -159,7 +159,7 @@ public class ArrayListOfString {
 
             reader.close();
             return true;
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Error, filename is incorrect");
         }
         return false;
@@ -169,12 +169,10 @@ public class ArrayListOfString {
         Map<Integer, List<String>> stringMap = new HashMap<>();
         for (var item :
                 arrayList) {
-            if (stringMap.containsKey(item.length())) {
-                stringMap.get(item.length()).add(item);
-            } else {
+            if (!stringMap.containsKey(item.length())) {
                 stringMap.put(item.length(), new ArrayList<>());
-                stringMap.get(item.length()).add(item);
             }
+            stringMap.get(item.length()).add(item);
         }
         return stringMap;
     }
